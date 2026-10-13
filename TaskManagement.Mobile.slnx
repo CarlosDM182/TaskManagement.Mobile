@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="TaskManagement.Mobile/TaskManagement.Mobile.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

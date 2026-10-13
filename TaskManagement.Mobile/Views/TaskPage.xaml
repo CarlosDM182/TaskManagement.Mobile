@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="TaskManagement.Mobile.Views.TaskPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModel="clr-namespace:TaskManagement.Mobile.ViewModels"
+    Title="My Tasks">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False"/>
+    </Shell.BackButtonBehavior>
+
+    <Grid Padding="20">
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshTasksCommand}">
+        <CollectionView
+            ItemsSource="{Binding Tasks}">
+
+            <CollectionView.EmptyView>
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                    <Label
+                        Text="No tasks found."
+                        FontSize="18" />
+
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                        <Border
+                            Padding="15"
+                            Margin="0,0,0,10"
+                            StrokeShape="RoundRectangle 10">
+
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:TaskViewModel}},
+                                                      Path=TaskSelectedCommand}"
+                                    CommandParameter="{Binding}" />
+                            </Border.GestureRecognizers>
+
+                            <VerticalStackLayout Spacing="5">
+
+                            <Label
+                                Text="{Binding Title}"
+                                FontSize="18"
+                                FontAttributes="Bold" />
+
+                            <Label
+                                Text="{Binding Description}"
+                                FontSize="14" />
+
+                            <Label
+                                Text="{Binding Priority}"
+                                FontSize="14" />
+
+                            <Label
+                                Text="{Binding Status}"
+                                FontSize="14" />
+
+                            <Label
+                                Text="{Binding DueDate, StringFormat='Due: {0:dd/MM/yyyy HH:mm}'}"
+                                FontSize="12" />
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+     </RefreshView>
+
+        <ActivityIndicator
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+
+        <Label
+            Text="{Binding ErrorMessage}"
+            TextColor="Red"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            Margin="0,0,0,20" />
+
+    </Grid>
+
+</ContentPage>

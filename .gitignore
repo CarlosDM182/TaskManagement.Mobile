@@ -1,0 +1,57 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio Code
+.vscode/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# NuGet
+*.nupkg
+*.snupkg
+
+# MAUI / Android
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# Android generated files
+**/Platforms/Android/bin/
+**/Platforms/Android/obj/
+
+# iOS generated files
+**/Platforms/iOS/bin/
+**/Platforms/iOS/obj/
+
+# macOS generated files
+**/Platforms/MacCatalyst/bin/
+**/Platforms/MacCatalyst/obj/
+
+# Windows generated files
+**/Platforms/Windows/bin/
+**/Platforms/Windows/obj/
+
+# Firebase
+google-services.json
+**/Platforms/Android/google-services.json
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# User-specific files
+*.rsuser
